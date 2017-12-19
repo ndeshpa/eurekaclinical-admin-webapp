@@ -1,4 +1,5 @@
-package org.eurekaclinical.admin.webapp.config;
+package org.eurekaclinical.admin.webapp.props;
+
 import org.eurekaclinical.standardapis.props.CasEurekaClinicalProperties;
 
 /*-
@@ -20,11 +21,18 @@ import org.eurekaclinical.standardapis.props.CasEurekaClinicalProperties;
  * limitations under the License.
  * #L%
  */
+/**
+ * AdminWebappProperties maintains list to properties for servers and urls
+ * @author Nita
+ *
+ */
 
 
 public class AdminWebappProperties extends CasEurekaClinicalProperties {
 
-	protected AdminWebappProperties() {
+	//constructor made public to enable this class to be in package props as recommended in the wiki:
+	//https://github.com/eurekaclinical/dev-wiki/wiki/Structure-of-Eureka%21-Clinical-microservices
+	public AdminWebappProperties() {
 		super("/etc/ec-user");
 	}
 

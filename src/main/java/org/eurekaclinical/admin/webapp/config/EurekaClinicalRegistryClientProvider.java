@@ -2,7 +2,7 @@ package org.eurekaclinical.admin.webapp.config;
 
 /*-
  * #%L
- * Eureka WebApp
+ * Eureka Clinical Admin Webapp
  * %%
  * Copyright (C) 2012 - 2017 Emory University
  * %%
@@ -24,7 +24,7 @@ import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
 
 /**
  *
- * @author Andrew Post
+ * @author Nita
  */
 public class EurekaClinicalRegistryClientProvider implements Provider<EurekaClinicalRegistryClient> {
 

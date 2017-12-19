@@ -19,19 +19,19 @@ package org.eurekaclinical.admin.webapp.config;
  * limitations under the License.
  * #L%
  */
+/**
+ * AppModule sets up binding for client and provider classes.
+ * @author Nita
+ */
 
 
 import org.eurekaclinical.admin.client.EurekaClinicalAdminClient;
 import org.eurekaclinical.admin.webapp.clients.ServiceClientRouterTable;
+import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
 import org.eurekaclinical.common.comm.clients.AuthorizingEurekaClinicalClient;
-import org.eurekaclinical.common.comm.clients.ClientException;
 import org.eurekaclinical.common.comm.clients.RouterTable;
 import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
-import org.eurekaclinical.scribeupext.provider.GitHubProvider;
-import org.eurekaclinical.scribeupext.provider.GlobusProvider;
-import org.eurekaclinical.scribeupext.provider.Google2Provider;
 import org.eurekaclinical.standardapis.props.CasEurekaClinicalProperties;
-import org.eurekaclinical.user.client.EurekaClinicalUserClient;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.servlet.SessionScoped;
@@ -45,8 +45,6 @@ public class AppModule extends AbstractModule {
     AppModule(AdminWebappProperties adminWebappProperties) {
     	this.adminWebappProperties = adminWebappProperties;
     	this.clientProvider = new EurekaClinicalAdminClientProvider(adminWebappProperties.getUserServiceUrl());
-    	System.out.println("=========================================");
-    	System.out.println(adminWebappProperties.getUserServiceUrl());
     	this.registryClientProvider = new EurekaClinicalRegistryClientProvider(
                 adminWebappProperties.getRegistryServiceUrl());
     }

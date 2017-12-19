@@ -25,15 +25,13 @@ import java.util.HashMap;
 
 import java.util.Map;
 
+import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
 import org.eurekaclinical.common.config.AbstractAuthorizingServletModule;
 import org.eurekaclinical.common.servlet.DestroySessionServlet;
 import org.eurekaclinical.common.servlet.LogoutServlet;
 import org.eurekaclinical.common.servlet.ProxyServlet;
-import org.eurekaclinical.standardapis.props.CasEurekaClinicalProperties;
 
 import com.google.inject.Singleton;
-
-import org.eurekaclinical.admin.webapp.config.AdminWebappProperties;
 
 public class ServletModule extends AbstractAuthorizingServletModule {
 	
@@ -51,11 +49,8 @@ public class ServletModule extends AbstractAuthorizingServletModule {
 		//creates a single instance
 		bind(LogoutServlet.class).in(Singleton.class);
 		serve(LOGOUT_PATH).with(LogoutServlet.class);
-		System.out.println("**********************************");
-		serve("/proxy-resource/*").with(ProxyServlet.class);
-		
-		serve("/destroy-session").with(DestroySessionServlet.class);
-		
+		serve("/proxy-resource/*").with(ProxyServlet.class);		
+		serve("/destroy-session").with(DestroySessionServlet.class);		
 	}
 	
     @Override

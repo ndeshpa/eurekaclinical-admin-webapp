@@ -45,8 +45,6 @@ public class EurekaClinicalAdminClient extends AuthorizingEurekaClinicalClient {
 	public EurekaClinicalAdminClient(String inUserServiceUrl) {
 		super(null);
 		this.userServiceUrl = URI.create(inUserServiceUrl);
-		System.out.println("+++++++++++++++++++++++++++++++++++++");
-		System.out.println(this.userServiceUrl.toString());
 	}
 
 	@Override

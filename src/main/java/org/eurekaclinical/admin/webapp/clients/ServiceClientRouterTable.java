@@ -2,9 +2,9 @@ package org.eurekaclinical.admin.webapp.clients;
 
 /*-
  * #%L
- * Eureka! Clinical User Webapp
+ * Eureka! Clinical Admin Webapp
  * %%
- * Copyright (C) 2016 Emory University
+ * Copyright (C) 2016 - 2017 Emory University
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,9 +27,9 @@ import org.eurekaclinical.common.comm.clients.RouterTable;
 import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
 
 /**
- * EurekaclinicalUserClient is the external used client
+ * ServiceClientRouterTable to map incoming routes to clients 
  *
- * @author miaoai
+ * @author nita
  */
 public class ServiceClientRouterTable implements RouterTable {
 

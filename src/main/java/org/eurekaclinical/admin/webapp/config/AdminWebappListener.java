@@ -3,6 +3,7 @@ package org.eurekaclinical.admin.webapp.config;
 import javax.servlet.ServletContextEvent;
 
 import org.eurekaclinical.admin.client.EurekaClinicalAdminClient;
+import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
 import org.eurekaclinical.common.config.ClientSessionListener;
 import org.eurekaclinical.common.config.InjectorSupport;
 import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
@@ -29,6 +30,12 @@ import com.google.inject.servlet.GuiceServletContextListener;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * #L%
+ */
+
+/**
+ * AdminWebappListener is the entry point for all requests.
+ * @author Nita
+ *
  */
 
 
