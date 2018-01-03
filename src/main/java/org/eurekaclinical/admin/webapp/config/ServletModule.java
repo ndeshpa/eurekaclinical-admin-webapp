@@ -26,8 +26,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
+import org.eurekaclinical.admin.webapp.servlet.DestroySessionServlet;
+import org.eurekaclinical.admin.webapp.servlet.SessionPropertiesServlet;
 import org.eurekaclinical.common.config.AbstractAuthorizingServletModule;
-import org.eurekaclinical.common.servlet.DestroySessionServlet;
 import org.eurekaclinical.common.servlet.LogoutServlet;
 import org.eurekaclinical.common.servlet.ProxyServlet;
 
@@ -50,7 +51,8 @@ public class ServletModule extends AbstractAuthorizingServletModule {
 		bind(LogoutServlet.class).in(Singleton.class);
 		serve(LOGOUT_PATH).with(LogoutServlet.class);
 		serve("/proxy-resource/*").with(ProxyServlet.class);		
-		serve("/destroy-session").with(DestroySessionServlet.class);		
+		serve("/destroy-session").with(DestroySessionServlet.class);
+		serve("/get-session-properties").with(SessionPropertiesServlet.class);
 	}
 	
     @Override
