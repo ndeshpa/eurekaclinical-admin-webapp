@@ -52,9 +52,9 @@ public class AdminWebappListener extends GuiceServletContextListener {
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
 		super.contextInitialized(servletContextEvent);
 		servletContextEvent.getServletContext()
-			.addListener(new ClientSessionListener(EurekaClinicalAdminClient.class));
-        servletContextEvent.getServletContext().addListener(
-                new ClientSessionListener(EurekaClinicalRegistryClient.class));
+			.addListener(new ClientSessionListener());
+        //servletContextEvent.getServletContext().addListener(
+         //       new ClientSessionListener(EurekaClinicalRegistryClient.class));
         servletContextEvent.getServletContext().setAttribute(
                 "adminWebAppProperties", this.adminWebappProperties);
 	}
