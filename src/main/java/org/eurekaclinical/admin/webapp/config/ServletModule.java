@@ -26,8 +26,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
-import org.eurekaclinical.admin.webapp.servlet.DestroySessionServlet;
-import org.eurekaclinical.admin.webapp.servlet.SessionPropertiesServlet;
+import org.eurekaclinical.common.servlet.DestroySessionServlet;
+import org.eurekaclinical.common.servlet.SessionPropertiesServlet;
 import org.eurekaclinical.common.config.AbstractAuthorizingServletModule;
 import org.eurekaclinical.common.servlet.LogoutServlet;
 import org.eurekaclinical.common.servlet.ProxyServlet;
