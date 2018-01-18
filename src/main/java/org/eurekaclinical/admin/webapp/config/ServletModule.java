@@ -27,17 +27,17 @@ import java.util.Map;
 
 import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
 import org.eurekaclinical.common.servlet.DestroySessionServlet;
-import org.eurekaclinical.common.servlet.SessionPropertiesServlet;
+import org.eurekaclinical.common.servlet.LoginServlet;
 import org.eurekaclinical.common.config.AbstractAuthorizingServletModule;
-import org.eurekaclinical.common.servlet.LogoutServlet;
+//import org.eurekaclinical.common.servlet.LogoutServlet;
+import org.eurekaclinical.common.servlet.PostMessageLoginServlet;
 import org.eurekaclinical.common.servlet.ProxyServlet;
+import org.eurekaclinical.common.servlet.SessionPropertiesServlet;
 
 import com.google.inject.Singleton;
 
 public class ServletModule extends AbstractAuthorizingServletModule {
-	
-	private static final String LOGOUT_PATH = "/logout";
-	
+		
 	private final AdminWebappProperties properties;
 
 	protected ServletModule(AdminWebappProperties inProperties) {
@@ -47,15 +47,15 @@ public class ServletModule extends AbstractAuthorizingServletModule {
 
 	@Override
 	protected void setupServlets() {
-		//creates a single instance
-		bind(LogoutServlet.class).in(Singleton.class);
-		serve(LOGOUT_PATH).with(LogoutServlet.class);
-		serve("/proxy-resource/*").with(ProxyServlet.class);		
-		serve("/destroy-session").with(DestroySessionServlet.class);
-		serve("/get-session-properties").with(SessionPropertiesServlet.class);
+		serve("/login*").with(LoginServlet.class);
+		serve("/proxy-resource/*").with(ProxyServlet.class);
+		serve("/logout").with(LogoutServlet.class); 
+		serve("/destroy-session").with(DestroySessionServlet.class); 
+		serve("/get-session-properties").with(SessionPropertiesServlet.class);      
+		serve("/get-session").with(PostMessageLoginServlet.class);				
 	}
 	
-    @Override
+  @Override
     protected Map<String, String> getCasValidationFilterInitParams() {
         Map<String, String> params = new HashMap<>();
         params.put("casServerUrlPrefix", this.properties.getCasUrl());

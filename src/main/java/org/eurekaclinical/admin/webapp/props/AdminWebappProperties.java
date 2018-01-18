@@ -1,5 +1,7 @@
 package org.eurekaclinical.admin.webapp.props;
 
+import java.util.List;
+
 import org.eurekaclinical.standardapis.props.CasEurekaClinicalProperties;
 
 /*-
@@ -53,5 +55,15 @@ public class AdminWebappProperties extends CasEurekaClinicalProperties {
 	public String getRegistryServiceUrl() {
         return getValue("eurekaclinical.registryservice.url");
     }
+	
+    public boolean isDemoMode() {
+        return Boolean.parseBoolean(getValue("eurekaclinical.adminwebapp.demomode"));
+    }
+
+    @Override
+    public List<String> getAllowedWebClientUrls() {
+        return getStringListValue("eurekaclinical.adminwebapp.allowedwebclients");
+    }
+
 
 }
