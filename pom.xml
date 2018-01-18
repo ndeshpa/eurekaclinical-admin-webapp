@@ -9,11 +9,11 @@
 	web interface to manage users of Eureka! Clinical multiple projects</description>
 	<inceptionYear>2018</inceptionYear>
 
-	<parent>
+	<!-- parent>
 		<groupId>org.eurekaclinical</groupId>
 		<artifactId>eurekaclinical-parent-standard-deps</artifactId>
 		<version>2-Beta-4</version>
-	</parent>
+	</parent-->
 
 	<properties>
 		<tomcat.port>8080</tomcat.port>
