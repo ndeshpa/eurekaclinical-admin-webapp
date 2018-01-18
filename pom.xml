@@ -7,13 +7,13 @@
 	<name>Eureka! Clinical Admin Webapp</name>
 	<description>Eureka! Clinical Admin Webapp is the implementation of Eureka! Clinical Admin 
 	web interface to manage users of Eureka! Clinical multiple projects</description>
+	<inceptionYear>2018</inceptionYear>
 
-
-	<!-- parent>
+	<parent>
 		<groupId>org.eurekaclinical</groupId>
 		<artifactId>eurekaclinical-parent-standard-deps</artifactId>
 		<version>2-Beta-4</version>
-	</parent-->
+	</parent>
 
 	<properties>
 		<tomcat.port>8080</tomcat.port>
@@ -32,6 +32,18 @@
 		<!-- added as javadoc was failing -->
 		<maven.javadoc.skip>true</maven.javadoc.skip>
 	</properties>
+	
+  <scm>
+    <tag>HEAD</tag>
+    <url>https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</url>
+    <connection>scm:git:https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</connection>
+    <developerConnection>scm:git:https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</developerConnection>
+  </scm>
+    
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/ndeshpa/eurekaclinical-admin-webapp/issues</url>
+    </issueManagement>
 
 	<build>
 		<finalName>eurekaclinical-admin-webapp</finalName>
@@ -57,6 +69,30 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>                                     
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>                                
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*.htm</exclude>
+                        <exclude>**/*.html</exclude>
+                        <exclude>**/*.js</exclude>
+                        <exclude>**/*.css</exclude>
+                        <exclude>**/*.json</exclude>
+                    </excludes>
+                </configuration>                            
+            </plugin> 
 			<plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
@@ -373,12 +409,4 @@
 			<version>${ec-registry-client-version}</version>
 		</dependency>
 	</dependencies>
-
-
-  <scm>
-    <tag>HEAD</tag>
-    <url>https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</url>
-    <connection>scm:git:https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</connection>
-    <developerConnection>scm:git:https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</developerConnection>
-  </scm>
 </project>
