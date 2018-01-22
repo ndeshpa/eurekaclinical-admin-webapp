@@ -29,7 +29,7 @@ import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
 import org.eurekaclinical.common.servlet.DestroySessionServlet;
 import org.eurekaclinical.common.servlet.LoginServlet;
 import org.eurekaclinical.common.config.AbstractAuthorizingServletModule;
-//import org.eurekaclinical.common.servlet.LogoutServlet;
+import org.eurekaclinical.common.servlet.LogoutServlet;
 import org.eurekaclinical.common.servlet.PostMessageLoginServlet;
 import org.eurekaclinical.common.servlet.ProxyServlet;
 import org.eurekaclinical.common.servlet.SessionPropertiesServlet;

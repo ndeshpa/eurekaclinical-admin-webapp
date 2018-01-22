@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eurekaclinical</groupId>
 	<artifactId>eurekaclinical-admin-webapp</artifactId>
@@ -15,6 +16,18 @@
 		<version>2-Beta-4</version>
 	</parent>
 
+	<scm>
+		<tag>HEAD</tag>
+		<url>https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</url>
+		<connection>scm:git:https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</connection>
+		<developerConnection>scm:git:https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</developerConnection>
+	</scm>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/ndeshpa/eurekaclinical-admin-webapp/issues</url>
+	</issueManagement>
+
 	<properties>
 		<tomcat.port>8080</tomcat.port>
 		<tomcat.httpsPort>8443</tomcat.httpsPort>
@@ -24,26 +37,14 @@
 		<jsp-api-version>2.0</jsp-api-version>
 		<ec-user-client-version>1.0-Alpha-26</ec-user-client-version>
 		<ec-user-service-version>1.0-Alpha-31</ec-user-service-version>
-		<ec-common-version>2.0-Alpha-40</ec-common-version>		
-        <ec-standard-apis-version>2.0-Alpha-19</ec-standard-apis-version>
-        <ec-registry-client-version>1.0-Alpha-4</ec-registry-client-version>
-        <ec-registry-service-version>1.0-Alpha-10</ec-registry-service-version>
-        <scribe-up-ext-version>2.0-Beta-2</scribe-up-ext-version>
+		<ec-common-version>2.0-Alpha-40</ec-common-version>
+		<ec-standard-apis-version>2.0-Alpha-19</ec-standard-apis-version>
+		<ec-registry-client-version>1.0-Alpha-4</ec-registry-client-version>
+		<ec-registry-service-version>1.0-Alpha-10</ec-registry-service-version>
+		<scribe-up-ext-version>2.0-Beta-2</scribe-up-ext-version>
 		<!-- added as javadoc was failing -->
 		<maven.javadoc.skip>true</maven.javadoc.skip>
 	</properties>
-	
-  <scm>
-    <tag>HEAD</tag>
-    <url>https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</url>
-    <connection>scm:git:https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</connection>
-    <developerConnection>scm:git:https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</developerConnection>
-  </scm>
-    
-    <issueManagement>
-        <system>GitHub</system>
-        <url>https://github.com/ndeshpa/eurekaclinical-admin-webapp/issues</url>
-    </issueManagement>
 
 	<build>
 		<finalName>eurekaclinical-admin-webapp</finalName>
@@ -70,41 +71,33 @@
 				</executions>
 			</plugin>
 			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>                                     
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>                                
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*.htm</exclude>
-                        <exclude>**/*.html</exclude>
-                        <exclude>**/*.js</exclude>
-                        <exclude>**/*.css</exclude>
-                        <exclude>**/*.json</exclude>
-                    </excludes>
-                </configuration>                            
-            </plugin> 
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
 			<plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-release-plugin</artifactId>
-          <version>2.5.1</version>
-          <dependencies>
-            <dependency>
-              <groupId>org.apache.maven.shared</groupId>
-              <artifactId>maven-invoker</artifactId>
-              <version>2.2</version>
-            </dependency>
-          </dependencies>
-        </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/*.htm</exclude>
+						<exclude>**/*.html</exclude>
+						<exclude>**/*.js</exclude>
+						<exclude>**/*.css</exclude>
+						<exclude>**/*.json</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<!-- plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-release-plugin</artifactId> 
+				<version>2.5.1</version> <dependencies> <dependency> <groupId>org.apache.maven.shared</groupId> 
+				<artifactId>maven-invoker</artifactId> <version>2.2</version> </dependency> 
+				</dependencies> </plugin -->
 		</plugins>
 	</build>
 
@@ -365,11 +358,11 @@
 			<artifactId>eurekaclinical-common</artifactId>
 			<version>${ec-common-version}</version>
 		</dependency>
-        <dependency>
-            <groupId>org.eurekaclinical</groupId>
-            <artifactId>eurekaclinical-standard-apis</artifactId>
-            <version>${ec-standard-apis-version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.eurekaclinical</groupId>
+			<artifactId>eurekaclinical-standard-apis</artifactId>
+			<version>${ec-standard-apis-version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.eurekaclinical</groupId>
 			<artifactId>eurekaclinical-user-client</artifactId>
