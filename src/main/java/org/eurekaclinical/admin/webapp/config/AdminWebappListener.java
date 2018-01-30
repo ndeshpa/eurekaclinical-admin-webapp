@@ -2,15 +2,15 @@ package org.eurekaclinical.admin.webapp.config;
 
 import javax.servlet.ServletContextEvent;
 
-import org.eurekaclinical.admin.client.EurekaClinicalAdminClient;
 import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
 import org.eurekaclinical.common.config.ClientSessionListener;
 import org.eurekaclinical.common.config.InjectorSupport;
-import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
-
 import com.google.inject.Injector;
 import com.google.inject.Module;
 import com.google.inject.servlet.GuiceServletContextListener;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /*-
  * #%L
@@ -41,11 +41,13 @@ import com.google.inject.servlet.GuiceServletContextListener;
 
 public class AdminWebappListener extends GuiceServletContextListener {
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(AdminWebappListener.class);
 	private final AdminWebappProperties adminWebappProperties;
 	private Injector injector;
 	
 	public AdminWebappListener() {
 		this.adminWebappProperties = new AdminWebappProperties();
+		LOGGER.info("Got Admin Properties");
 	}
 
 	@Override
@@ -55,6 +57,7 @@ public class AdminWebappListener extends GuiceServletContextListener {
 			.addListener(new ClientSessionListener());
         servletContextEvent.getServletContext().setAttribute(
                 "adminWebAppProperties", this.adminWebappProperties);
+        LOGGER.info("In AdminWebappListener: Initialized context");
 	}
 	
 	@Override
