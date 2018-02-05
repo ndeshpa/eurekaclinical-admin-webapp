@@ -168,7 +168,7 @@ public class ProxyServlet extends HttpServlet {
             LOGGER.info("ProxyServlet doGet status: " + clientResponse.getStatus());
             LOGGER.info("ProxyServlet baseurl: " + baseUrl(servletRequest.getContextPath(), servletRequest).toString());
             LOGGER.info("Headers: " + clientResponse.getHeaders());
-            LOGGER.info("Proxy response replacement path: " + proxyResponse.getReplacementPathAndClient());
+            LOGGER.info("Proxy response replacement path: " + proxyResponse.getReplacementPathAndClient().getPath());
             copyResponseHeaders(clientResponse.getHeaders(), proxyResponse.getReplacementPathAndClient(), baseUrl(servletRequest.getContextPath(), servletRequest).toString(), servletResponse);
             copyStream(clientResponse.getEntityInputStream(), servletResponse.getOutputStream());
         } catch (ClientException e) {
