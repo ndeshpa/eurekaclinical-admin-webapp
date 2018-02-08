@@ -30,13 +30,14 @@ import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
 import org.eurekaclinical.common.servlet.DestroySessionServlet;
 import org.eurekaclinical.common.servlet.LoginServlet;
 import org.eurekaclinical.common.config.AbstractAuthorizingServletModule;
+import org.eurekaclinical.common.config.WebappServletModule;
 import org.eurekaclinical.common.servlet.LogoutServlet;
 import org.eurekaclinical.common.servlet.PostMessageLoginServlet;
 import org.eurekaclinical.common.servlet.SessionPropertiesServlet;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
-public class ServletModule extends AbstractAuthorizingServletModule {
+public class ServletModule extends WebappServletModule {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ServletModule.class);
 	private final AdminWebappProperties properties;
