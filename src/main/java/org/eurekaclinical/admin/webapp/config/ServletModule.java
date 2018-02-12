@@ -57,12 +57,17 @@ public class ServletModule extends WebappServletModule {
 		LOGGER.info("URL " + this.properties.getUrl());
 		LOGGER.info("User Srvc URL " + this.properties.getUserServiceUrl());
 		LOGGER.info("Allowed web clients " + this.properties.getAllowedWebClientUrls().toString());
-		serve("/login*").with(LoginServlet.class);
-		serve("/proxy-resource/*").with(ProxyServlet.class);
-		serve("/logout").with(LogoutServlet.class); 
-		serve("/destroy-session").with(DestroySessionServlet.class); 
-		serve("/get-session-properties").with(SessionPropertiesServlet.class);      
-		serve("/get-session").with(PostMessageLoginServlet.class);		
+		serveLogin();
+		//serve("/login*").with(LoginServlet.class);
+		serveProxyResource();
+		//serve("/proxy-resource/*").with(ProxyServlet.class);
+		//serve("/logout").with(LogoutServlet.class); 
+		serveLogout();
+		//serve("/destroy-session").with(DestroySessionServlet.class);
+		serveDestroySession();
+		serve("/get-session-properties").with(SessionPropertiesServlet.class);  
+		
+		//serve("/get-session").with(PostMessageLoginServlet.class);		
 
 	}
 	
