@@ -1,5 +1,7 @@
 package org.eurekaclinical.admin.webapp.props;
 
+import java.util.List;
+
 import org.eurekaclinical.standardapis.props.CasEurekaClinicalProperties;
 
 /*-
@@ -33,7 +35,7 @@ public class AdminWebappProperties extends CasEurekaClinicalProperties {
 	//constructor made public to enable this class to be in package props as recommended in the wiki:
 	//https://github.com/eurekaclinical/dev-wiki/wiki/Structure-of-Eureka%21-Clinical-microservices
 	public AdminWebappProperties() {
-		super("/etc/ec-user");
+		super("/etc/ec-admin");
 	}
 
 	@Override
@@ -53,5 +55,15 @@ public class AdminWebappProperties extends CasEurekaClinicalProperties {
 	public String getRegistryServiceUrl() {
         return getValue("eurekaclinical.registryservice.url");
     }
+	
+    public boolean isDemoMode() {
+        return Boolean.parseBoolean(getValue("eurekaclinical.adminwebapp.demomode"));
+    }
+
+    @Override
+    public List<String> getAllowedWebClientUrls() {
+        return getStringListValue("eurekaclinical.adminwebapp.allowedwebclients");
+    }
+
 
 }

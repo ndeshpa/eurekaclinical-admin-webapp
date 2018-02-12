@@ -25,19 +25,21 @@ import java.util.HashMap;
 
 import java.util.Map;
 
+import org.eurekaclinical.admin.servlet.ProxyServlet;
 import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
 import org.eurekaclinical.common.servlet.DestroySessionServlet;
-import org.eurekaclinical.common.servlet.SessionPropertiesServlet;
+import org.eurekaclinical.common.servlet.LoginServlet;
 import org.eurekaclinical.common.config.AbstractAuthorizingServletModule;
+import org.eurekaclinical.common.config.WebappServletModule;
 import org.eurekaclinical.common.servlet.LogoutServlet;
-import org.eurekaclinical.common.servlet.ProxyServlet;
+import org.eurekaclinical.common.servlet.PostMessageLoginServlet;
+import org.eurekaclinical.common.servlet.SessionPropertiesServlet;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
-import com.google.inject.Singleton;
-
-public class ServletModule extends AbstractAuthorizingServletModule {
+public class ServletModule extends WebappServletModule {
 	
-	private static final String LOGOUT_PATH = "/logout";
-	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ServletModule.class);
 	private final AdminWebappProperties properties;
 
 	protected ServletModule(AdminWebappProperties inProperties) {
@@ -47,15 +49,24 @@ public class ServletModule extends AbstractAuthorizingServletModule {
 
 	@Override
 	protected void setupServlets() {
-		//creates a single instance
-		bind(LogoutServlet.class).in(Singleton.class);
-		serve(LOGOUT_PATH).with(LogoutServlet.class);
-		serve("/proxy-resource/*").with(ProxyServlet.class);		
-		serve("/destroy-session").with(DestroySessionServlet.class);
-		serve("/get-session-properties").with(SessionPropertiesServlet.class);
+		LOGGER.info("Setting up servlets in ServletModule");
+		LOGGER.info("CAS LOGIN " + this.properties.getCasLoginUrl());
+		LOGGER.info("CAS LOGOUT " + this.properties.getCasLogoutUrl());
+		LOGGER.info("CAS URL " + this.properties.getCasUrl());
+		LOGGER.info("Config dir " + this.properties.getConfigDir());
+		LOGGER.info("URL " + this.properties.getUrl());
+		LOGGER.info("User Srvc URL " + this.properties.getUserServiceUrl());
+		LOGGER.info("Allowed web clients " + this.properties.getAllowedWebClientUrls().toString());
+		serve("/login*").with(LoginServlet.class);
+		serve("/proxy-resource/*").with(ProxyServlet.class);
+		serve("/logout").with(LogoutServlet.class); 
+		serve("/destroy-session").with(DestroySessionServlet.class); 
+		serve("/get-session-properties").with(SessionPropertiesServlet.class);      
+		serve("/get-session").with(PostMessageLoginServlet.class);		
+
 	}
 	
-    @Override
+  @Override
     protected Map<String, String> getCasValidationFilterInitParams() {
         Map<String, String> params = new HashMap<>();
         params.put("casServerUrlPrefix", this.properties.getCasUrl());
@@ -64,5 +75,4 @@ public class ServletModule extends AbstractAuthorizingServletModule {
         params.put("proxyReceptorUrl", getCasProxyCallbackPath());
         return params;
     }
-
 }
