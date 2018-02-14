@@ -79,6 +79,7 @@ public class LoginServlet extends HttpServlet {
         System.out.println("webclient="+ webClient);
         if ((webClient != null && isAllowed(URI.create(webClient)))) {
         	 System.out.println("Redirecting to: "+ webClient);
+        	 resp.setHeader("loggedIn", "true");
             resp.sendRedirect(webClient);
         }
     }
