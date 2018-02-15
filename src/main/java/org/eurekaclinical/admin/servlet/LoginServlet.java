@@ -75,20 +75,23 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String webClient = req.getParameter("webclient");
-        System.out.println("==============IN LOGING SERVLET===============");
+        System.out.println("==============IN LOGIN SERVLET===============");
         System.out.println("webclient="+ webClient);
         if ((webClient != null && isAllowed(URI.create(webClient)))) {
         	 System.out.println("Redirecting to: "+ webClient);
         	 resp.setHeader("loggedIn", "true");
-            resp.sendRedirect(webClient);
+            //resp.sendRedirect(webClient);
+        	 resp.sendRedirect("http://www.google.com");
         }
     }
 
     private boolean isAllowed(URI actualWebClient) {
         if (this.allowedWebClientURIs.length == 0) {
+        	System.out.println("NO allowedWebClientURIs");
             return true;
         } else {
             for (URI allowedWebClientURI : this.allowedWebClientURIs) {
+            	System.out.println("ALLOWED: " + allowedWebClientURI.toString());
                 if (allowedWebClientURI.equals(actualWebClient)) {
                     return true;
                 }
