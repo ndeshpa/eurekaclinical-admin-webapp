@@ -74,14 +74,14 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String webClient = req.getParameter("webclient");
+        String webClient = req.getParameter("webclient") + "#/welcome/loggedIn";
         System.out.println("==============IN LOGIN SERVLET===============");
         System.out.println("webclient="+ webClient);
         if ((webClient != null && isAllowed(URI.create(webClient)))) {
         	 System.out.println("Redirecting to: "+ webClient);
         	 resp.setHeader("loggedIn", "true");
             //resp.sendRedirect(webClient);
-        	 resp.sendRedirect("http://www.google.com");
+        	 resp.sendRedirect(webClient);
         }
     }
 
