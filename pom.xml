@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eurekaclinical</groupId>
 	<artifactId>eurekaclinical-admin-webapp</artifactId>
-	<version>1.0-Alpha-13-SNAPSHOT</version>
+	<version>1.0-Alpha-13</version>
 	<packaging>war</packaging>
 	<name>Eureka! Clinical Admin Webapp</name>
 	<description>Eureka! Clinical Admin Webapp is the implementation of Eureka! Clinical Admin 
@@ -16,7 +16,7 @@
 	</parent>
 
 	<scm>
-		<tag>eurekaclinical-admin-webapp-1.0-Alpha-2</tag>
+		<tag>eurekaclinical-admin-webapp-1.0-Alpha-13</tag>
 		<url>https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</url>
 		<connection>scm:git:https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</connection>
 		<developerConnection>scm:git:https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</developerConnection>
