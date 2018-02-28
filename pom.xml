@@ -28,7 +28,7 @@
 	</issueManagement>
 
 	<properties>
-		<tomcat.port>8080</tomcat.port>
+		<tomcat.port>8082</tomcat.port>
 		<tomcat.httpsPort>8443</tomcat.httpsPort>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 		<ec.build.timestamp>${maven.build.timestamp}</ec.build.timestamp>

@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String webClient = req.getParameter("webclient") + "#/welcome/loggedIn";
+        String webClient = req.getParameter("webclient") + "/#/welcome/loggedIn";
         System.out.println("==============IN LOGIN SERVLET===============");
         System.out.println("webclient="+ webClient);
         if ((webClient != null && isAllowed(URI.create(webClient)))) {
