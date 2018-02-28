@@ -81,7 +81,7 @@ public class LoginServlet extends HttpServlet {
         	 System.out.println("Redirecting to: "+ webClient);
         	 resp.setHeader("loggedIn", "true");
             //resp.sendRedirect(webClient);
-        	 resp.sendRedirect(webClient);
+        	 resp.sendRedirect(webClient+"/#/welcome?action=loggedIn");
         }
     }
 
