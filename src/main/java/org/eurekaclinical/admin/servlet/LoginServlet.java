@@ -77,9 +77,8 @@ public class LoginServlet extends HttpServlet {
         String webClient = req.getParameter("webclient");
         System.out.println("==============IN LOGIN SERVLET===============");
         System.out.println("webclient="+ webClient);
-        if ((webClient + "/#/welcome/loggedIn" != null && isAllowed(URI.create(webClient)))) {
-        	 System.out.println("Redirecting to: "+ webClient + "/#/welcome/loggedIn");
-        	 webClient += "/#/welcome?action=loggedIn";
+        if ((webClient != null && isAllowed(URI.create(webClient)))) {
+        	 System.out.println("Redirecting to: "+ webClient);
         	 resp.setHeader("loggedIn", "true");
             //resp.sendRedirect(webClient);
         	 resp.sendRedirect(webClient);
