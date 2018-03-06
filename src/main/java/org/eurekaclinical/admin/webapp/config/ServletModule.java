@@ -25,10 +25,10 @@ import java.util.HashMap;
 
 import java.util.Map;
 
+import org.eurekaclinical.admin.servlet.LoginServlet;
 import org.eurekaclinical.admin.servlet.ProxyServlet;
 import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
 import org.eurekaclinical.common.servlet.DestroySessionServlet;
-import org.eurekaclinical.common.servlet.LoginServlet;
 import org.eurekaclinical.common.config.AbstractAuthorizingServletModule;
 import org.eurekaclinical.common.config.WebappServletModule;
 import org.eurekaclinical.common.servlet.LogoutServlet;
@@ -57,13 +57,17 @@ public class ServletModule extends WebappServletModule {
 		LOGGER.info("URL " + this.properties.getUrl());
 		LOGGER.info("User Srvc URL " + this.properties.getUserServiceUrl());
 		LOGGER.info("Allowed web clients " + this.properties.getAllowedWebClientUrls().toString());
-		serve("/login*").with(LoginServlet.class);
+		
+		//serveLogin();
+		serve("/protected/login").with(LoginServlet.class);
+		//serveProxyResource();
 		serve("/proxy-resource/*").with(ProxyServlet.class);
+		//serveLogout();
 		serve("/logout").with(LogoutServlet.class); 
-		serve("/destroy-session").with(DestroySessionServlet.class); 
-		serve("/get-session-properties").with(SessionPropertiesServlet.class);      
-		serve("/get-session").with(PostMessageLoginServlet.class);		
+		//serveDestroySession();
+		serve("/destroy-session").with(DestroySessionServlet.class);
 
+		serve("/get-session-properties").with(SessionPropertiesServlet.class);  
 	}
 	
   @Override

@@ -57,6 +57,5 @@ public class AppModule extends AbstractModule {
         bind(EurekaClinicalRegistryClient.class).toProvider(this.registryClientProvider).in(SessionScoped.class);
         bind(AdminWebappProperties.class).toInstance(this.adminWebappProperties);
         bind(CasEurekaClinicalProperties.class).toInstance(this.adminWebappProperties);
-        bind(CasEurekaClinicalProperties.class).toInstance(this.adminWebappProperties);
     }
 }
