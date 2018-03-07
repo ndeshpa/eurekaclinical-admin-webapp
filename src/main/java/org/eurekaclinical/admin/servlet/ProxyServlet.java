@@ -119,11 +119,16 @@ public class ProxyServlet extends HttpServlet {
             throws IOException {
         ProxyingClient client = this.injector.getInstance(ProxyingClient.class);
         String path = servletRequest.getPathInfo();
+        LOGGER.info("ProxyServlet doGet path: " + path);
         MultivaluedMap<String, String> requestHeaders = extractRequestHeaders(servletRequest);
         MultivaluedMap<String, String> parameterMap = toMultivaluedMap(servletRequest.getParameterMap());
         try {
             ProxyResponse proxyResponse = client.proxyPost(path, servletRequest.getInputStream(), parameterMap, requestHeaders);
             ClientResponse clientResponse = proxyResponse.getClientResponse();
+            LOGGER.info("ProxyServlet doPost status: " + clientResponse.getStatus());
+            LOGGER.info("ProxyServlet baseurl: " + baseUrl(servletRequest.getContextPath(), servletRequest).toString());
+            LOGGER.info("Headers: " + clientResponse.getHeaders());
+            LOGGER.info("Proxy response replacement path: " + proxyResponse.getReplacementPathAndClient().getPath());
             servletResponse.setStatus(clientResponse.getStatus());
             copyResponseHeaders(clientResponse.getHeaders(), proxyResponse.getReplacementPathAndClient(), baseUrl(servletRequest.getContextPath(), servletRequest).toString(), servletResponse);
             copyStream(clientResponse.getEntityInputStream(), servletResponse.getOutputStream());

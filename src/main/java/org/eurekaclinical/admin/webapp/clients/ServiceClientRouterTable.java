@@ -24,7 +24,8 @@ import javax.inject.Inject;
 import org.eurekaclinical.admin.client.EurekaClinicalAdminClient;
 import org.eurekaclinical.common.comm.clients.Route;
 import org.eurekaclinical.common.comm.clients.RouterTable;
-import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
+//import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
+import org.eurekaclinical.useragreement.client.EurekaClinicalUserAgreementClient;
 
 /**
  * ServiceClientRouterTable to map incoming routes to clients 
@@ -34,19 +35,25 @@ import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
 public class ServiceClientRouterTable implements RouterTable {
 
     private final EurekaClinicalAdminClient client;
-    private final EurekaClinicalRegistryClient registryClient;
+    private final EurekaClinicalUserAgreementClient userAgreementclient;
+    //private final EurekaClinicalRegistryClient registryClient;
 
     @Inject
     public ServiceClientRouterTable(EurekaClinicalAdminClient inClient,
-            EurekaClinicalRegistryClient inRegistryClient) {
+            //EurekaClinicalRegistryClient inRegistryClient, 
+            EurekaClinicalUserAgreementClient inUserAgreementclient) {
         this.client = inClient;
-        this.registryClient = inRegistryClient;
+        //this.registryClient = inRegistryClient;
+        this.userAgreementclient = inUserAgreementclient;
     }
 
     @Override
     public Route[] load() {
         return new Route[]{
-            new Route("/components", "/api/protected/components", this.registryClient),
+            //new Route("/components", "/api/protected/components", this.registryClient),
+            new Route("/useragreements/current", "/api/protected/useragreements/current", this.userAgreementclient),
+        	new Route("/useragreements", "/api/protected/useragreements", this.userAgreementclient),
+            //new Route("/useragreements/current", "/api/protected/", this.userAgreementclient),
             new Route("/", "/api/protected/", this.client)
         };
     }
