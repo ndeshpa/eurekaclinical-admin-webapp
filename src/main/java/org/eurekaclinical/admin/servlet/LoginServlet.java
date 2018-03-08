@@ -81,7 +81,7 @@ public class LoginServlet extends HttpServlet {
         	 System.out.println("Redirecting to: "+ webClient);
         	 resp.setHeader("loggedIn", "true");
             //resp.sendRedirect(webClient);
-        	 resp.sendRedirect(webClient+"/#/welcome?action=loggedIn");
+        	 resp.sendRedirect(webClient+"/#/welcome/loggedIn");
         }
     }
 
@@ -92,7 +92,7 @@ public class LoginServlet extends HttpServlet {
         } else {
             for (URI allowedWebClientURI : this.allowedWebClientURIs) {
             	System.out.println("ALLOWED: " + allowedWebClientURI.toString());
-                if (allowedWebClientURI.equals(actualWebClient)) {
+                if (allowedWebClientURI.toString().startsWith(actualWebClient.toString())) {
                     return true;
                 }
             }

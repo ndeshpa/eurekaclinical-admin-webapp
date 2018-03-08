@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eurekaclinical.admin.servlet.EditServlet;
-import org.eurekaclinical.common.servlet.LoginServlet;
+import org.eurekaclinical.admin.servlet.LoginServlet;
 import org.eurekaclinical.admin.servlet.ProxyServlet;
 import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
 import org.eurekaclinical.common.config.WebappServletModule;
