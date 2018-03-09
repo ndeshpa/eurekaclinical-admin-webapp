@@ -58,17 +58,17 @@ public class ServletModule extends WebappServletModule {
 		LOGGER.info("Allowed web clients " + this.properties.getAllowedWebClientUrls().toString());
 		LOGGER.info("Allowed web clients " + this.properties.getUserAgreementServiceUrl());
 		
-		//serveLogin();
-		serve("/protected/login").with(LoginServlet.class);
-		//serveProxyResource();
-		serve("/proxy-resource/*").with(ProxyServlet.class);
-		//serveLogout();
-		serve("/logout").with(LogoutServlet.class); 
-		//serveDestroySession();
-		serve("/destroy-session").with(DestroySessionServlet.class);
-
+		serveLogin();
+		serveProxyResource(); 
+		serveLogout();
+		serveDestroySession();
 		serve("/get-session-properties").with(SessionPropertiesServlet.class); 
-        serve("/protected/edit").with(EditServlet.class);  
+		
+        //serve("/protected/edit").with(EditServlet.class);  
+		//serve("/protected/login").with(LoginServlet.class);
+		//serve("/proxy-resource/*").with(ProxyServlet.class);
+		//serve("/logout").with(LogoutServlet.class);
+		//serve("/destroy-session").with(DestroySessionServlet.class);
 	}
 	
   @Override

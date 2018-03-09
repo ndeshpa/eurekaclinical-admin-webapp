@@ -30,9 +30,8 @@ import org.eurekaclinical.admin.webapp.clients.ServiceClientRouterTable;
 import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
 import org.eurekaclinical.common.comm.clients.AuthorizingEurekaClinicalClient;
 import org.eurekaclinical.common.comm.clients.RouterTable;
-//import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
+import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
 import org.eurekaclinical.standardapis.props.CasEurekaClinicalProperties;
-import org.eurekaclinical.user.client.EurekaClinicalUserClient;
 import org.eurekaclinical.useragreement.client.EurekaClinicalUserAgreementClient;
 
 import com.google.inject.AbstractModule;
@@ -42,7 +41,7 @@ public class AppModule extends AbstractModule {
 	
 	private final AdminWebappProperties adminWebappProperties;
     private final EurekaClinicalAdminClientProvider clientProvider;
-    //private final EurekaClinicalRegistryClientProvider registryClientProvider;
+    private final EurekaClinicalRegistryClientProvider registryClientProvider;
     private final EurekaClinicalUserAgreementClientProvider userAgreementClientProvider;
     
     AppModule(AdminWebappProperties adminWebappProperties) {
@@ -50,8 +49,8 @@ public class AppModule extends AbstractModule {
     	this.clientProvider = new EurekaClinicalAdminClientProvider(adminWebappProperties.getUserServiceUrl());
     	this.userAgreementClientProvider = new EurekaClinicalUserAgreementClientProvider(
     			adminWebappProperties.getUserAgreementServiceUrl());
-    	//this.registryClientProvider = new EurekaClinicalRegistryClientProvider(
-          //      adminWebappProperties.getRegistryServiceUrl());
+    	this.registryClientProvider = new EurekaClinicalRegistryClientProvider(
+                adminWebappProperties.getRegistryServiceUrl());
     }
 
     @Override
@@ -59,7 +58,7 @@ public class AppModule extends AbstractModule {
         bind(RouterTable.class).to(ServiceClientRouterTable.class);
         bind(AuthorizingEurekaClinicalClient.class).toProvider(this.clientProvider).in(SessionScoped.class);
         bind(EurekaClinicalAdminClient.class).toProvider(this.clientProvider).in(SessionScoped.class);
-//        bind(EurekaClinicalRegistryClient.class).toProvider(this.registryClientProvider).in(SessionScoped.class);
+        bind(EurekaClinicalRegistryClient.class).toProvider(this.registryClientProvider).in(SessionScoped.class);
         bind(EurekaClinicalUserAgreementClient.class).toProvider(this.userAgreementClientProvider).in(SessionScoped.class);
         bind(AdminWebappProperties.class).toInstance(this.adminWebappProperties);
         bind(CasEurekaClinicalProperties.class).toInstance(this.adminWebappProperties);
