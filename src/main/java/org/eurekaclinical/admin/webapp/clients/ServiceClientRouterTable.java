@@ -30,7 +30,7 @@ import org.eurekaclinical.useragreement.client.EurekaClinicalUserAgreementClient
 /**
  * ServiceClientRouterTable to map incoming routes to clients 
  *
- * @author nita
+ * @author Nita
  */
 public class ServiceClientRouterTable implements RouterTable {
 
