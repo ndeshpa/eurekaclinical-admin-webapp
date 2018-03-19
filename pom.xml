@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eurekaclinical</groupId>
 	<artifactId>eurekaclinical-admin-webapp</artifactId>
-	<version>1.0-Alpha-14-SNAPSHOT</version>
+	<version>1.0-Alpha-18-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>Eureka! Clinical Admin Webapp</name>
 	<description>Eureka! Clinical Admin Webapp is the implementation of Eureka! Clinical Admin 
@@ -12,11 +12,11 @@
 	<parent>
 		<groupId>org.eurekaclinical</groupId>
 		<artifactId>eurekaclinical-parent-standard-deps</artifactId>
-		<version>2-Beta-4</version>
+		<version>2</version>
 	</parent>
 
 	<scm>
-		<tag>eurekaclinical-admin-webapp-1.0-Alpha-2</tag>
+		<tag>eurekaclinical-admin-webapp-1.0-Alpha-17</tag>
 		<url>https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</url>
 		<connection>scm:git:https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</connection>
 		<developerConnection>scm:git:https://github.com/ndeshpa/eurekaclinical-admin-webapp.git</developerConnection>
@@ -34,12 +34,14 @@
 		<ec.build.timestamp>${maven.build.timestamp}</ec.build.timestamp>
 		<jstl-version>1.2</jstl-version>
 		<jsp-api-version>2.0</jsp-api-version>
-		<ec-user-client-version>1.0-Alpha-26</ec-user-client-version>
-		<ec-user-service-version>1.0-Alpha-31</ec-user-service-version>
-		<ec-common-version>2.0-Alpha-40</ec-common-version>
-		<ec-standard-apis-version>2.0-Alpha-19</ec-standard-apis-version>
-		<ec-registry-client-version>1.0-Alpha-4</ec-registry-client-version>
-		<ec-registry-service-version>1.0-Alpha-10</ec-registry-service-version>
+		<ec-user-client-version>1.0</ec-user-client-version>
+		<ec-user-service-version>1.0</ec-user-service-version>
+		<eurekaclinical-user-agreement-client-version>2.0</eurekaclinical-user-agreement-client-version>
+		<eurekaclinical-user-agreement-service-version>2.0</eurekaclinical-user-agreement-service-version>
+		<ec-common-version>2.0</ec-common-version>
+		<ec-standard-apis-version>2.0</ec-standard-apis-version>
+		<ec-registry-client-version>1.0</ec-registry-client-version>
+		<ec-registry-service-version>1.0</ec-registry-service-version>
 		<scribe-up-ext-version>2.0-Beta-2</scribe-up-ext-version>
 		<!-- added as javadoc was failing -->
 		<maven.javadoc.skip>true</maven.javadoc.skip>
@@ -97,8 +99,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.1</version>
-				<!-- configuration below to prevent git push of tag as it was failing
-				Probably due to the registry issue HKEY_LOCAL_MACHINE -->
+				<!-- configuration below to prevent git push of tag as it was failing 
+					Probably due to the registry issue HKEY_LOCAL_MACHINE -->
 				<configuration>
 					<localCheckout>true</localCheckout>
 					<pushChanges>false</pushChanges>
@@ -251,6 +253,13 @@
 								</webapp>
 								<webapp>
 									<groupId>org.eurekaclinical</groupId>
+									<artifactId>eurekaclinical-user-agreement-service</artifactId>
+									<version>${eurekaclinical-user-agreement-service-version}</version>
+									<type>war</type>
+									<asWebapp>true</asWebapp>
+								</webapp>
+								<webapp>
+									<groupId>org.eurekaclinical</groupId>
 									<artifactId>eurekaclinical-registry-service</artifactId>
 									<version>${ec-registry-service-version}</version>
 									<type>war</type>
@@ -282,6 +291,25 @@
 									</artifactItems>
 									<includes>WEB-INF/classes/dbmigration/changelog-master.xml</includes>
 									<outputDirectory>${project.build.directory}/eureka-config</outputDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>copy-sql-from-eurekaclinical-user-agreement-service</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.eurekaclinical</groupId>
+											<artifactId>eurekaclinical-user-agreement-service</artifactId>
+											<version>${eurekaclinical-user-agreement-service-version}</version>
+											<type>war</type>
+										</artifactItem>
+									</artifactItems>
+									<includes>WEB-INF/classes/dbmigration/changelog-master.xml</includes>
+									<outputDirectory>${project.build.directory}/eureka-user-agreement-config</outputDirectory>
 								</configuration>
 							</execution>
 							<execution>
@@ -321,16 +349,27 @@
 								</configuration>
 							</execution>
 							<execution>
-								<id>liquibase-populate-ec-registry-service-db</id>
+								<id>liquibase-populate-user-agreement-db</id>
 								<phase>process-resources</phase>
 								<goals>
 									<goal>update</goal>
 								</goals>
 								<configuration>
-									<changeLogFile>${project.build.directory}/ec-registry-service-config/WEB-INF/classes/dbmigration/changelog-master.xml</changeLogFile>
-									<url>jdbc:h2:file:${project.build.directory}/db/ec-registry-service-db</url>
+									<changeLogFile>${project.build.directory}/eureka-user-agreement-config/WEB-INF/classes/dbmigration/changelog-master.xml</changeLogFile>
+									<url>jdbc:h2:file:${project.build.directory}/db/ec-user-agreement-db</url>
 								</configuration>
 							</execution>
+								<execution>
+									<id>liquibase-populate-ec-registry-service-db</id>
+									<phase>process-resources</phase>
+									<goals>
+										<goal>update</goal>
+									</goals>
+									<configuration>
+										<changeLogFile>${project.build.directory}/ec-registry-service-config/WEB-INF/classes/dbmigration/changelog-master.xml</changeLogFile>
+										<url>jdbc:h2:file:${project.build.directory}/db/ec-registry-service-db</url>
+									</configuration>
+								</execution>
 						</executions>
 					</plugin>
 				</plugins>
@@ -361,6 +400,13 @@
 					<type>war</type>
 					<scope>runtime</scope>
 				</dependency>
+				<dependency>
+					<groupId>org.eurekaclinical</groupId>
+					<artifactId>eurekaclinical-user-agreement-service</artifactId>
+					<version>${eurekaclinical-user-agreement-service-version}</version>
+					<type>war</type>
+					<scope>runtime</scope>
+				</dependency>
 			</dependencies>
 		</profile>
 	</profiles>
@@ -380,6 +426,11 @@
 			<groupId>org.eurekaclinical</groupId>
 			<artifactId>eurekaclinical-user-client</artifactId>
 			<version>${ec-user-client-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eurekaclinical</groupId>
+			<artifactId>eurekaclinical-user-agreement-client</artifactId>
+			<version>${eurekaclinical-user-agreement-client-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>

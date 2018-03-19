@@ -33,10 +33,7 @@ import org.slf4j.LoggerFactory;
 import com.sun.jersey.api.client.GenericType;
 
 public class EurekaClinicalAdminClient extends AuthorizingEurekaClinicalClient {
-	
-	private static final Logger LOGGER
-    = LoggerFactory.getLogger(EurekaClinicalAdminClient.class);
-	
+		
 	private static final GenericType<List<User>> UserList = new GenericType<List<User>>() {
     };
     

@@ -55,7 +55,11 @@ public class AdminWebappProperties extends CasEurekaClinicalProperties {
 	public String getRegistryServiceUrl() {
         return getValue("eurekaclinical.registryservice.url");
     }
-	
+	  
+    public String getUserAgreementServiceUrl() {
+    	return getValue("eurekaclinical.useragreementservice.url");
+    }
+
     public boolean isDemoMode() {
         return Boolean.parseBoolean(getValue("eurekaclinical.adminwebapp.demomode"));
     }
