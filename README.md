@@ -26,7 +26,9 @@ No final releases yet
 
 ## Proxied REST APIs
 You can call all of [eurekaclinical-user-service](https://github.com/eurekaclinical/eurekaclinical-user-service)'s  and 
-[eurekaclinical-user-agreement-service](https://github.com/eurekaclinical/eurekaclinical-user-service)'s REST APIs through the proxy. 
+[eurekaclinical-user-agreement-service](https://github.com/eurekaclinical/eurekaclinical-user-agreement-service)'s
+and 
+[eurekaclinical-registry-service](https://github.com/eurekaclinical/eurekaclinical-registry-service)'s REST APIs through the proxy. 
 Replace `/api/protected/` with `/proxy-resource`. The point of doing this is for web clients -- you can deploy the webapp on the 
 same server as web client, and deploy the service on a separate server.
 
@@ -36,7 +38,7 @@ For simple file changes, not additions or deletions, you can usually use `mvn in
 See https://github.com/eurekaclinical/dev-wiki/wiki/Building-Eureka!-Clinical-projects for more details.
 
 ## Performing system tests
-You can run this project in an embedded tomcat by executing `mvn tomcat7:run -Ptomcat` after you have built it. 
+You can run this project in an embedded tomcat by executing `mvn process-resources cargo:run -Ptomcat` after you have built it. 
 It will be accessible in your web browser at https://localhost:8443/eurekaclinical-admin-webapp/. Your username will be `superuser`.
 
 ## Installation
@@ -47,6 +49,7 @@ properties:
 * `eurekaclinical.adminwebapp.url`: https://hostname:port/eurekaclinical-admin-webapp
 * `eurekaclinical.userservice.url`: https://hostname.of.userservice:port/eurekaclinical-user-service
 * `eurekaclinical.useragreementservice.url`: https://hostname.of.useragreementservice:port/eurekaclinical-user-agreement-service
+`eurekaclinical.registry.url`: https://hostname.of.registryservice:port/eurekaclinical-registry-service
 * `cas.url`: https://hostname.of.casserver:port/cas-server
 * `cas.url.login`: /login
 * `cas.url.logout`: /logout
