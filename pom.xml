@@ -44,8 +44,6 @@
 		<ec-registry-client-version>1.1-Beta-2</ec-registry-client-version>
 		<ec-registry-service-version>1.2-Beta-3</ec-registry-service-version>
 		<cas-mock-version>2.0</cas-mock-version>
-		<!-- added as javadoc was failing -->
-		<maven.javadoc.skip>true</maven.javadoc.skip>
 	</properties>
 
 	<build>
