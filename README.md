@@ -6,11 +6,10 @@ Atlanta, GA
 It provides web pages for admin to manage user profiles and the user agreement. It also implements a proxy servlet and router 
 for web clients to access the web services provided by eurekaclinical-user-service and eurekaclinical-user-agreement-service.
 
-## Version 1.0 development series
 Latest release:[![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-admin-webapp/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-admin-webapp)
 
-## Version history
-No final releases yet
+## Version 1.0
+Initial release.
 
 ## Build requirements
 * [Oracle Java JDK 8](http://www.oracle.com/technetwork/java/javase/overview/index.html)
