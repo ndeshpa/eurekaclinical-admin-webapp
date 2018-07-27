@@ -30,6 +30,7 @@ import org.eurekaclinical.admin.webapp.clients.ServiceClientRouterTable;
 import org.eurekaclinical.admin.webapp.props.AdminWebappProperties;
 import org.eurekaclinical.common.comm.clients.AuthorizingEurekaClinicalClient;
 import org.eurekaclinical.common.comm.clients.RouterTable;
+import org.eurekaclinical.protempa.client.EurekaClinicalProtempaClient;
 import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
 import org.eurekaclinical.standardapis.props.CasEurekaClinicalProperties;
 import org.eurekaclinical.useragreement.client.EurekaClinicalUserAgreementClient;
@@ -38,19 +39,22 @@ import com.google.inject.AbstractModule;
 import com.google.inject.servlet.SessionScoped;
 
 public class AppModule extends AbstractModule {
-	
-	private final AdminWebappProperties adminWebappProperties;
+    
+    private final AdminWebappProperties adminWebappProperties;
     private final EurekaClinicalAdminClientProvider clientProvider;
     private final EurekaClinicalRegistryClientProvider registryClientProvider;
     private final EurekaClinicalUserAgreementClientProvider userAgreementClientProvider;
+    private final EurekaClinicalProtempaClientProvider protempaClientProvider;
     
     AppModule(AdminWebappProperties adminWebappProperties) {
-    	this.adminWebappProperties = adminWebappProperties;
-    	this.clientProvider = new EurekaClinicalAdminClientProvider(adminWebappProperties.getUserServiceUrl());
-    	this.userAgreementClientProvider = new EurekaClinicalUserAgreementClientProvider(
-    			adminWebappProperties.getUserAgreementServiceUrl());
-    	this.registryClientProvider = new EurekaClinicalRegistryClientProvider(
+        this.adminWebappProperties = adminWebappProperties;
+        this.clientProvider = new EurekaClinicalAdminClientProvider(adminWebappProperties.getUserServiceUrl());
+        this.userAgreementClientProvider = new EurekaClinicalUserAgreementClientProvider(
+                adminWebappProperties.getUserAgreementServiceUrl());
+        this.registryClientProvider = new EurekaClinicalRegistryClientProvider(
                 adminWebappProperties.getRegistryServiceUrl());
+        this.protempaClientProvider = new EurekaClinicalProtempaClientProvider(
+                adminWebappProperties.getProtempaServiceUrl());
     }
 
     @Override
@@ -62,5 +66,6 @@ public class AppModule extends AbstractModule {
         bind(EurekaClinicalUserAgreementClient.class).toProvider(this.userAgreementClientProvider).in(SessionScoped.class);
         bind(AdminWebappProperties.class).toInstance(this.adminWebappProperties);
         bind(CasEurekaClinicalProperties.class).toInstance(this.adminWebappProperties);
+        bind(EurekaClinicalProtempaClient.class).toProvider(this.protempaClientProvider).in(SessionScoped.class);
     }
 }
