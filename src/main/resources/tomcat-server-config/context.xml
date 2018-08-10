@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!--
   #%L
-  Eureka! Clinical User Agreement Service
+  Eureka! Clinical Admin Webapp
   %%
-  Copyright (C) 2016 Emory University
+  Copyright (C) 2018 Emory University
   %%
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -19,25 +19,31 @@
   #L%
   -->
 
+
 <Context>
     <WatchedResource>WEB-INF/web.xml</WatchedResource>
 
     <Resource name="jdbc/UserService" auth="Container"
-            type="javax.sql.DataSource" driverClassName="org.h2.Driver"
-            factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
-            url="jdbc:h2:file:${basedir}/target/db/db"
-            initialSize="3" maxActive="20" maxIdle="1" minIdle="1"
-            maxWait="-1"/>
-    <Resource name="jdbc/EurekaClinicalRegistryService" auth="Container"
-            type="javax.sql.DataSource" driverClassName="org.h2.Driver"
-            factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
-            url="jdbc:h2:file:${basedir}/target/db/ec-registry-service-db"
-            initialSize="3" maxActive="20" maxIdle="1" minIdle="1"
-            maxWait="-1"/>   
-    <Resource name="jdbc/EurekaClinicalUserAgreementService" auth="Container"
-            type="javax.sql.DataSource" driverClassName="org.h2.Driver"
-            factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
-            url="jdbc:h2:file:${basedir}/target/db/ec-user-agreement-db"
-            initialSize="3" maxActive="20" maxIdle="1" minIdle="1"
-            maxWait="-1"/> 
+        type="javax.sql.DataSource" driverClassName="org.h2.Driver"
+        factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+        url="jdbc:h2:file:${basedir}/target/db/db" initialSize="3"
+        maxActive="20" maxIdle="1" minIdle="1" maxWait="-1" />
+    <Resource name="jdbc/EurekaClinicalRegistryService"
+        auth="Container" type="javax.sql.DataSource"
+        driverClassName="org.h2.Driver"
+        factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+        url="jdbc:h2:file:${basedir}/target/db/ec-registry-service-db"
+        initialSize="3" maxActive="20" maxIdle="1" minIdle="1" maxWait="-1" />
+    <Resource name="jdbc/EurekaClinicalUserAgreementService"
+        auth="Container" type="javax.sql.DataSource"
+        driverClassName="org.h2.Driver"
+        factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+        url="jdbc:h2:file:${basedir}/target/db/ec-user-agreement-db"
+        initialSize="3" maxActive="20" maxIdle="1" minIdle="1" maxWait="-1" />
+    <Resource name="jdbc/EurekaClinicalProtempaService"
+        auth="Container" type="javax.sql.DataSource"
+        driverClassName="org.h2.Driver"
+        factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+        url="jdbc:h2:file:${basedir}/target/db/ec-protempa-db" initialSize="3"
+        maxActive="20" maxIdle="1" minIdle="1" maxWait="-1" />
 </Context>

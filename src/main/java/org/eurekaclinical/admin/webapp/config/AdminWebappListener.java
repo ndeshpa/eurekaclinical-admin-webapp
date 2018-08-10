@@ -31,49 +31,48 @@ import org.slf4j.LoggerFactory;
  * limitations under the License.
  * #L%
  */
-
 /**
  * AdminWebappListener is the entry point for all requests.
+ *
  * @author Nita
  *
  */
-
-
 public class AdminWebappListener extends GuiceServletContextListener {
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(AdminWebappListener.class);
-	private final AdminWebappProperties adminWebappProperties;
-	private Injector injector;
-	
-	public AdminWebappListener() {
-		this.adminWebappProperties = new AdminWebappProperties();
-		LOGGER.info("Got Admin Properties");
-	}
 
-	@Override
-	public void contextInitialized(ServletContextEvent servletContextEvent) {
-		super.contextInitialized(servletContextEvent);
-		servletContextEvent.getServletContext()
-			.addListener(new ClientSessionListener());
+    private static final Logger LOGGER = LoggerFactory.getLogger(AdminWebappListener.class);
+    private final AdminWebappProperties adminWebappProperties;
+    private Injector injector;
+
+    public AdminWebappListener() {
+        this.adminWebappProperties = new AdminWebappProperties();
+        LOGGER.info("Got Admin Properties");
+    }
+
+    @Override
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
+        super.contextInitialized(servletContextEvent);
+        servletContextEvent.getServletContext()
+                .addListener(new ClientSessionListener());
         servletContextEvent.getServletContext().setAttribute(
                 "adminWebAppProperties", this.adminWebappProperties);
         LOGGER.info("In AdminWebappListener: Initialized context");
-	}
-	
-	@Override
-	public void contextDestroyed(ServletContextEvent servletContextEvent) {
-		super.contextDestroyed(servletContextEvent);
-		servletContextEvent.getServletContext().removeAttribute( "adminWebAppProperties");
-	}
-	@Override
-	protected Injector getInjector() {
-		 this.injector = new InjectorSupport(
-	                new Module[]{
-	                    new AppModule(this.adminWebappProperties),
-	                    new ServletModule(this.adminWebappProperties)
-	                },
-	                this.adminWebappProperties).getInjector();
-	        return this.injector;
-	}
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+        super.contextDestroyed(servletContextEvent);
+        servletContextEvent.getServletContext().removeAttribute("adminWebAppProperties");
+    }
+
+    @Override
+    protected Injector getInjector() {
+        this.injector = new InjectorSupport(
+                new Module[]{
+                    new AppModule(this.adminWebappProperties),
+                    new ServletModule(this.adminWebappProperties)
+                },
+                this.adminWebappProperties).getInjector();
+        return this.injector;
+    }
 
 }

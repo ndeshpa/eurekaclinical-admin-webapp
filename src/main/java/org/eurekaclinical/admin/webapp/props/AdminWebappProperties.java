@@ -32,32 +32,32 @@ import org.eurekaclinical.standardapis.props.CasEurekaClinicalProperties;
 
 public class AdminWebappProperties extends CasEurekaClinicalProperties {
 
-	//constructor made public to enable this class to be in package props as recommended in the wiki:
-	//https://github.com/eurekaclinical/dev-wiki/wiki/Structure-of-Eureka%21-Clinical-microservices
-	public AdminWebappProperties() {
-		super("/etc/ec-admin");
-	}
-
-	@Override
-	public String getProxyCallbackServer() {
-		return getValue("eurekaclinical.adminwebapp.callbackserver");
-	}
-
-	@Override
-	public String getUrl() {
-		return getValue("eurekaclinical.adminwebapp.url");
+    //constructor made public to enable this class to be in package props as recommended in the wiki:
+    //https://github.com/eurekaclinical/dev-wiki/wiki/Structure-of-Eureka%21-Clinical-microservices
+    public AdminWebappProperties() {
+        super("/etc/ec-admin");
     }
-	
-	 public String getUserServiceUrl() {
-	        return this.getValue("eurekaclinical.userservice.url");
-	 }
-	
-	public String getRegistryServiceUrl() {
+
+    @Override
+    public String getProxyCallbackServer() {
+        return getValue("eurekaclinical.adminwebapp.callbackserver");
+    }
+
+    @Override
+    public String getUrl() {
+        return getValue("eurekaclinical.adminwebapp.url");
+    }
+    
+     public String getUserServiceUrl() {
+            return this.getValue("eurekaclinical.userservice.url");
+     }
+    
+    public String getRegistryServiceUrl() {
         return getValue("eurekaclinical.registryservice.url");
     }
-	  
+      
     public String getUserAgreementServiceUrl() {
-    	return getValue("eurekaclinical.useragreementservice.url");
+        return getValue("eurekaclinical.useragreementservice.url");
     }
 
     public boolean isDemoMode() {
@@ -67,6 +67,10 @@ public class AdminWebappProperties extends CasEurekaClinicalProperties {
     @Override
     public List<String> getAllowedWebClientUrls() {
         return getStringListValue("eurekaclinical.adminwebapp.allowedwebclients");
+    }
+    
+    public String getProtempaServiceUrl() {
+        return getValue("eurekaclinical.protempaservice.url");
     }
 
 
