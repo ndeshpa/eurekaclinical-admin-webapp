@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.eurekaclinical</groupId>
     <artifactId>eurekaclinical-admin-webapp</artifactId>
-    <version>1.0-Alpha-19-SNAPSHOT</version>
+    <version>1.0-Alpha-21-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Eureka! Clinical Admin Webapp</name>
     <description>Eureka! Clinical Admin Webapp is the implementation of Eureka! Clinical Admin 
@@ -38,7 +38,7 @@ web interface to manage users of Eureka! Clinical multiple projects</description
         <ec-user-service-version>2.0</ec-user-service-version>
         <eurekaclinical-user-agreement-client-version>2.1</eurekaclinical-user-agreement-client-version>
         <eurekaclinical-user-agreement-service-version>3.0</eurekaclinical-user-agreement-service-version>
-        <eurekaclinical-protempa-service-version>1.1-Beta-28</eurekaclinical-protempa-service-version>
+        <eurekaclinical-protempa-service-version>1.1-Beta-30-SNAPSHOT</eurekaclinical-protempa-service-version>
         <eurekaclinical-protempa-client-version>1.0</eurekaclinical-protempa-client-version>        
         <ec-common-version>3.1-Beta-3</ec-common-version>
         <ec-standard-apis-version>2.2-Beta-1</ec-standard-apis-version>
