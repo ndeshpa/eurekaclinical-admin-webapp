@@ -40,10 +40,10 @@
         factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
         url="jdbc:h2:file:${basedir}/target/db/ec-user-agreement-db"
         initialSize="3" maxActive="20" maxIdle="1" minIdle="1" maxWait="-1" />
-    <Resource name="jdbc/EurekaClinicalProtempaService"
-        auth="Container" type="javax.sql.DataSource"
-        driverClassName="org.h2.Driver"
-        factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
-        url="jdbc:h2:file:${basedir}/target/db/ec-protempa-db" initialSize="3"
-        maxActive="20" maxIdle="1" minIdle="1" maxWait="-1" />
+	<Resource name="jdbc/EurekaBackend" auth="Container"
+		type="javax.sql.DataSource" driverClassName="org.h2.Driver"
+		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+		url="jdbc:h2:file:${basedir}/target/eureka-db/eurekaclinical-protempa-service;LOG=1"
+		initialSize="3" maxActive="20" maxIdle="7" minIdle="3"
+		maxWait="10000" validationQuery="SELECT 1" testOnBorrow="true"/>
 </Context>
