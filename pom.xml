@@ -59,17 +59,7 @@ web interface to manage users of Eureka! Clinical multiple projects</description
                         <param>etc/license-mappings.xml</param>
                     </licenseMapping>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>check-license</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>generate</goal>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            </plugin>      
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
