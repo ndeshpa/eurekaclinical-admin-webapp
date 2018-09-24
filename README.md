@@ -8,6 +8,10 @@ for web clients to access the web services provided by eurekaclinical-user-servi
 
 Latest release:[![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-admin-webapp/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-admin-webapp)
 
+## Version 1.1
+Updated dependencies. Added route to eurekaclinical-protempa-service for future
+job management functionality.
+
 ## Version 1.0
 Initial release.
 
