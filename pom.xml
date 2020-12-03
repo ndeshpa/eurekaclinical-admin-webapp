@@ -34,7 +34,7 @@ web interface to manage users of Eureka! Clinical multiple projects</description
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <ec.build.timestamp>${maven.build.timestamp}</ec.build.timestamp>
         <ec-user-client-version>1.7</ec-user-client-version>
-        <ec-user-service-version>2.5</ec-user-service-version>
+        <ec-user-service-version>2.6</ec-user-service-version>
         <eurekaclinical-user-agreement-client-version>2.4-Alpha-2</eurekaclinical-user-agreement-client-version>
         <eurekaclinical-user-agreement-service-version>3.2-Alpha-2</eurekaclinical-user-agreement-service-version>
         <eurekaclinical-protempa-service-version>3.1-Alpha-4</eurekaclinical-protempa-service-version>
