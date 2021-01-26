@@ -37,7 +37,7 @@ web interface to manage users of Eureka! Clinical multiple projects</description
         <ec-user-service-version>2.6</ec-user-service-version>
         <eurekaclinical-user-agreement-client-version>2.4-Alpha-2</eurekaclinical-user-agreement-client-version>
         <eurekaclinical-user-agreement-service-version>3.2-Alpha-2</eurekaclinical-user-agreement-service-version>
-        <eurekaclinical-protempa-service-version>3.1-Alpha-4</eurekaclinical-protempa-service-version>
+        <eurekaclinical-protempa-service-version>3.1-Alpha-5</eurekaclinical-protempa-service-version>
         <eurekaclinical-protempa-client-version>3.1-Alpha-4</eurekaclinical-protempa-client-version>        
         <ec-common-version>5.1-Alpha-1</ec-common-version>
         <ec-standard-apis-version>4.1-Alpha-1</ec-standard-apis-version>
